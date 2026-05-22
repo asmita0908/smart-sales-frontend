@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <h1>Welcome to Smart Sales Workspace</h1>
+        <p>Sales Management Dashboard</p>
+        <p id="roleMessage"></p>
+        <p>Select a section to manage daily sales work.</p>
+        <div class="dashboard-menu">
+
+            <a href="customers.html">Customer Contacts</a>
+
+            <a href="sales-activity.html">
+                Daily Sales Activity
+            </a>
+
+            <a href="opportunities.html">
+                Sales Opportunities
+            </a>
+
+            <a href="reports.html" id="reportLink">
+                Reports & Performance
+            </a>
+
+        </div>
+        <button onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+    <script>
+
+        const role = localStorage.getItem("role");
+
+        if (!role) {
+
+            window.location.href = "login.html";
+
+        }
+
+        document.getElementById("roleMessage")
+            .innerText = "Logged in as: " + role;
+        if (role === "Sales Representative") {
+
+            document.getElementById("reportLink")
+                .style.display = "none";
+        }
+
+        function logout() {
+
+            localStorage.clear();
+
+            window.location.href = "login.html";
+        }
+
+    </script>
+
+</body>
+
+</html>
